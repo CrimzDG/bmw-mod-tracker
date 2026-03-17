@@ -43,36 +43,33 @@
 }
 
 /* ── Spend tracker widget ── */
+
+/* Outer wrapper carries the gradient background + rounded corners.
+   1px padding exposes it as a border all the way around. */
 .spend-tracker {
   position: fixed;
   bottom: 24px;
   right: 24px;
   z-index: 40;
-  background: var(--bg2);
-  border: 1px solid var(--border2);
-  border-radius: 16px;
-  padding: 16px 20px;
-  min-width: 220px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.3);
+  background: var(--m-gradient);
+  border-radius: 18px;
+  padding: 1.5px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.45), 0 2px 8px rgba(0,0,0,0.3);
   animation: slide-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
   transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s;
-  /* M gradient top border done with pseudo element so corners stay rounded */
-  overflow: hidden;
-}
-
-/* M gradient top line via pseudo element — keeps border-radius intact */
-.spend-tracker::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: var(--m-gradient);
-  border-radius: 16px 16px 0 0;
 }
 
 .spend-tracker:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 4px 12px rgba(123,47,255,0.1);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 4px 16px rgba(123,47,255,0.15);
+}
+
+/* Inner card sits on top of the gradient wrapper */
+.spend-tracker-inner {
+  background: var(--bg2);
+  border-radius: 17px;
+  padding: 16px 20px;
+  min-width: 220px;
 }
 
 .spend-tracker-label {
@@ -106,7 +103,6 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* swapped — remaining is red, spent is green */
 .spend-tracker-val--remaining { color: #f87171; }
 .spend-tracker-val--spent     { color: #4ade80; }
 

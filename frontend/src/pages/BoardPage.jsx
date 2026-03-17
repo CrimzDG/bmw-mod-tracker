@@ -32,27 +32,29 @@ function SpendTracker({ mods }) {
 
   return (
     <div className="spend-tracker">
-      <div className="spend-tracker-label">Build Budget</div>
+      <div className="spend-tracker-inner">
+        <div className="spend-tracker-label">Build Budget</div>
 
-      <div className="spend-tracker-row">
-        <span className="spend-tracker-key">Total budget</span>
-        <span className="spend-tracker-val">{fmt(totalEstimated)}</span>
-      </div>
+        <div className="spend-tracker-row">
+          <span className="spend-tracker-key">Total budget</span>
+          <span className="spend-tracker-val">{fmt(totalEstimated)}</span>
+        </div>
 
-      <div className="spend-tracker-divider" />
+        <div className="spend-tracker-divider" />
 
-      <div className="spend-tracker-row">
-        <span className="spend-tracker-key">Remaining</span>
-        <span className="spend-tracker-val spend-tracker-val--remaining">{fmt(remaining)}</span>
-      </div>
+        <div className="spend-tracker-row">
+          <span className="spend-tracker-key">Remaining</span>
+          <span className="spend-tracker-val spend-tracker-val--remaining">{fmt(remaining)}</span>
+        </div>
 
-      <div className="spend-tracker-row">
-        <span className="spend-tracker-key">Spent</span>
-        <span className="spend-tracker-val spend-tracker-val--spent">{fmt(totalSpent)}</span>
-      </div>
+        <div className="spend-tracker-row">
+          <span className="spend-tracker-key">Spent</span>
+          <span className="spend-tracker-val spend-tracker-val--spent">{fmt(totalSpent)}</span>
+        </div>
 
-      <div className="spend-tracker-bar-wrap">
-        <div className="spend-tracker-bar" style={{ width: `${pct}%` }} />
+        <div className="spend-tracker-bar-wrap">
+          <div className="spend-tracker-bar" style={{ width: `${pct}%` }} />
+        </div>
       </div>
     </div>
   )
