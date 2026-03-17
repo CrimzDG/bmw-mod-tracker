@@ -8,12 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/api/health")
 public class HealthController {
 
-    @GetMapping("/health")
+    @GetMapping
     public ResponseEntity<Map<String, String>> health() {
-        System.out.println("Health check called!");
         return ResponseEntity.ok(Map.of("status", "ok"));
     }
 }
