@@ -53,9 +53,24 @@
   color: var(--text2);
   line-height: 1.5;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  word-break: break-word;
+}
+
+/* clickable links inside description */
+.mod-card-link {
+  color: var(--blue);
+  text-decoration: none;
+  font-size: 12px;
+  border-bottom: 1px solid rgba(28,110,255,0.3);
+  transition: color 0.15s, border-color 0.15s;
+  cursor: pointer;
+}
+.mod-card-link:hover {
+  color: #6aa3ff;
+  border-bottom-color: rgba(106,163,255,0.5);
 }
 
 .mod-card-footer {

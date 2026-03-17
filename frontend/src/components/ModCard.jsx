@@ -2,6 +2,34 @@ import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 import './ModCard.css'
 
+const URL_REGEX = /(https?:\/\/[^\s]+)/g
+
+function renderDescription(text) {
+  if (!text) return null
+  const parts = text.split(URL_REGEX)
+  return parts.map((part, i) => {
+    if (URL_REGEX.test(part)) {
+      // reset lastIndex after test()
+      URL_REGEX.lastIndex = 0
+      return (
+        <a
+          key={i}
+          href={part}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mod-card-link"
+          onClick={e => e.stopPropagation()}
+          onPointerDown={e => e.stopPropagation()}
+        >
+          {part.replace(/^https?:\/\//, '').replace(/\/$/, '')}
+        </a>
+      )
+    }
+    URL_REGEX.lastIndex = 0
+    return part
+  })
+}
+
 export default function ModCard({ mod, onClick, onDelete }) {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } =
     useSortable({ id: mod.id })
@@ -41,7 +69,7 @@ export default function ModCard({ mod, onClick, onDelete }) {
         </div>
 
         {mod.description && (
-          <p className="mod-card-desc">{mod.description}</p>
+          <p className="mod-card-desc">{renderDescription(mod.description)}</p>
         )}
 
         <div className="mod-card-footer">
