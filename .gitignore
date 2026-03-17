@@ -7,7 +7,11 @@ backend/*.iml
 backend/.mvn/
 backend/mvnw
 backend/mvnw.cmd
+backend/railway.json.bak
 
+# Never commit real secrets
+backend/src/main/resources/application.properties
+backend/src/main/resources/application-prod.properties
 
 # ──────────────────────────────────────────────
 # Frontend
