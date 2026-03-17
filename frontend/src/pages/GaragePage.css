@@ -14,6 +14,7 @@
   max-width: 1000px;
   margin: 0 auto;
   width: 100%;
+  animation: page-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .garage-top {
@@ -23,6 +24,7 @@
   margin-bottom: 36px;
   flex-wrap: wrap;
   gap: 16px;
+  animation: slide-up 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.05s both;
 }
 
 .garage-heading {
@@ -32,10 +34,7 @@
   letter-spacing: -0.02em;
 }
 
-.garage-sub {
-  color: var(--text2);
-  font-size: 14px;
-}
+.garage-sub { color: var(--text2); font-size: 14px; }
 
 .garage-grid {
   display: flex;
@@ -52,10 +51,19 @@
 }
 
 @media (min-width: 1024px) {
-  .garage-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  .garage-grid { grid-template-columns: repeat(3, 1fr); }
 }
+
+/* each car card staggers in */
+.garage-grid > * {
+  animation: slide-up 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.garage-grid > *:nth-child(1) { animation-delay: 0.08s; }
+.garage-grid > *:nth-child(2) { animation-delay: 0.14s; }
+.garage-grid > *:nth-child(3) { animation-delay: 0.20s; }
+.garage-grid > *:nth-child(4) { animation-delay: 0.26s; }
+.garage-grid > *:nth-child(5) { animation-delay: 0.32s; }
+.garage-grid > *:nth-child(6) { animation-delay: 0.38s; }
 
 .garage-loading {
   display: flex;
@@ -72,6 +80,7 @@
   color: var(--text2);
   font-size: 15px;
   text-align: center;
+  animation: slide-up 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
 }
 
 .garage-empty-icon {
@@ -84,4 +93,9 @@
   align-items: center;
   justify-content: center;
   box-shadow: 0 0 32px rgba(123,47,255,0.1);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s;
+}
+.garage-empty-icon:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 48px rgba(123,47,255,0.2);
 }

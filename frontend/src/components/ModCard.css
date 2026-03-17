@@ -4,13 +4,15 @@
   border-radius: var(--radius);
   cursor: grab;
   touch-action: none;
-  transition: border-color 0.15s, box-shadow 0.15s;
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+  animation: scale-in 0.25s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 .mod-card:hover {
   border-color: var(--border2);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+  transform: translateY(-1px);
 }
-.mod-card:active { cursor: grabbing; }
+.mod-card:active { cursor: grabbing; transform: scale(0.98); }
 
 .mod-card-inner {
   padding: 14px;
@@ -41,10 +43,10 @@
   padding: 2px;
   flex-shrink: 0;
   opacity: 0;
-  transition: opacity 0.15s, color 0.15s;
+  transition: opacity 0.15s, color 0.15s, transform 0.15s;
 }
 .mod-card:hover .mod-card-delete { opacity: 1; }
-.mod-card-delete:hover { color: var(--red); }
+.mod-card-delete:hover { color: var(--red); transform: scale(1.2); }
 
 .mod-card-desc {
   font-size: 12px;
