@@ -28,7 +28,6 @@
   .board-columns { gap: 16px; }
 }
 
-/* columns stagger in */
 .board-columns > * {
   animation: slide-up 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
@@ -51,16 +50,24 @@
   z-index: 40;
   background: var(--bg2);
   border: 1px solid var(--border2);
-  border-radius: var(--radius-lg);
+  border-radius: 16px;
   padding: 16px 20px;
   min-width: 220px;
   box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.3);
   animation: slide-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
   transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s;
-  /* M gradient top border */
-  border-top: 2px solid transparent;
-  border-image: var(--m-gradient) 1;
-  border-image-slice: 1;
+  /* M gradient top border done with pseudo element so corners stay rounded */
+  overflow: hidden;
+}
+
+/* M gradient top line via pseudo element — keeps border-radius intact */
+.spend-tracker::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--m-gradient);
+  border-radius: 16px 16px 0 0;
 }
 
 .spend-tracker:hover {
@@ -99,10 +106,10 @@
   font-variant-numeric: tabular-nums;
 }
 
-.spend-tracker-val--spent { color: #f87171; }
-.spend-tracker-val--remaining { color: #4ade80; }
+/* swapped — remaining is red, spent is green */
+.spend-tracker-val--remaining { color: #f87171; }
+.spend-tracker-val--spent     { color: #4ade80; }
 
-/* progress bar */
 .spend-tracker-bar-wrap {
   height: 4px;
   background: var(--bg3);

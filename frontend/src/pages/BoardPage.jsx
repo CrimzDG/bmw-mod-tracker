@@ -42,13 +42,13 @@ function SpendTracker({ mods }) {
       <div className="spend-tracker-divider" />
 
       <div className="spend-tracker-row">
-        <span className="spend-tracker-key">Spent</span>
-        <span className="spend-tracker-val spend-tracker-val--spent">{fmt(totalSpent)}</span>
+        <span className="spend-tracker-key">Remaining</span>
+        <span className="spend-tracker-val spend-tracker-val--remaining">{fmt(remaining)}</span>
       </div>
 
       <div className="spend-tracker-row">
-        <span className="spend-tracker-key">Remaining</span>
-        <span className="spend-tracker-val spend-tracker-val--remaining">{fmt(remaining)}</span>
+        <span className="spend-tracker-key">Spent</span>
+        <span className="spend-tracker-val spend-tracker-val--spent">{fmt(totalSpent)}</span>
       </div>
 
       <div className="spend-tracker-bar-wrap">
@@ -87,13 +87,9 @@ export default function BoardPage() {
     }
   }
 
-  function modsByStatus(status) {
-    return mods.filter(m => m.status === status)
-  }
-
+  function modsByStatus(status) { return mods.filter(m => m.status === status) }
   function findModById(id) { return mods.find(m => m.id === id) }
   function findStatusOfMod(id) { return mods.find(m => m.id === id)?.status }
-
   function handleDragStart({ active }) { setActiveId(active.id) }
 
   async function handleDragEnd({ active, over }) {
@@ -101,8 +97,7 @@ export default function BoardPage() {
     if (!over) return
     const mod = findModById(active.id)
     if (!mod) return
-    const overId = over.id
-    const targetStatus = STATUSES.includes(overId) ? overId : findStatusOfMod(overId)
+    const targetStatus = STATUSES.includes(over.id) ? over.id : findStatusOfMod(over.id)
     if (!targetStatus || mod.status === targetStatus) return
     setMods(ms => ms.map(m => m.id === mod.id ? { ...m, status: targetStatus } : m))
     try {
