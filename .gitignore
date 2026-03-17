@@ -8,8 +8,7 @@ backend/.mvn/
 backend/mvnw
 backend/mvnw.cmd
 
-# Never commit real secrets
-backend/src/main/resources/application.properties
+
 
 # ──────────────────────────────────────────────
 # Frontend
