@@ -1,0 +1,15 @@
+# Local dev — copy this to application.properties and fill in your values
+# DO NOT commit application.properties if it contains real secrets
+
+spring.datasource.url=jdbc:postgresql://<supabase-host>:5432/postgres
+spring.datasource.username=postgres
+spring.datasource.password=YOUR_SUPABASE_PASSWORD
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=false
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+
+jwt.secret=REPLACE_WITH_BASE64_256BIT_SECRET
+jwt.expiration-ms=86400000
+
+server.port=8080

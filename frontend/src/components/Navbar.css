@@ -1,0 +1,67 @@
+.navbar {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg2);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.navbar-back {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--text2);
+  font-size: 13px;
+  transition: color 0.15s;
+}
+.navbar-back:hover { color: var(--text); }
+
+.navbar-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.navbar-brand-bmw {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 0.1em;
+  color: var(--text);
+}
+
+.navbar-brand-sub {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: var(--blue);
+  text-transform: uppercase;
+}
+
+.navbar-title {
+  color: var(--text2);
+  font-size: 14px;
+  padding-left: 16px;
+  border-left: 1px solid var(--border2);
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navbar-user {
+  font-size: 13px;
+  color: var(--text2);
+}

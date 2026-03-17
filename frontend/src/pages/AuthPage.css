@@ -1,0 +1,81 @@
+.auth-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  gap: 32px;
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 0%, rgba(28,110,255,0.08) 0%, transparent 70%),
+    var(--bg);
+}
+
+.auth-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.auth-logo-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 48px;
+  letter-spacing: 0.12em;
+  color: var(--text);
+  line-height: 1;
+}
+
+.auth-logo-sub {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  color: var(--blue);
+  text-transform: uppercase;
+}
+
+.auth-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.auth-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.auth-subtitle {
+  color: var(--text2);
+  font-size: 14px;
+  margin-top: -10px;
+}
+
+.auth-error {
+  background: rgba(224,60,60,0.1);
+  border: 1px solid rgba(224,60,60,0.3);
+  color: #f87171;
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  font-size: 13px;
+}
+
+.auth-switch {
+  text-align: center;
+  color: var(--text2);
+  font-size: 13px;
+}
+
+.auth-switch a {
+  color: var(--blue);
+}
+
+.auth-switch a:hover {
+  text-decoration: underline;
+}
