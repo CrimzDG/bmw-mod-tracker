@@ -1,1 +1,2 @@
-web: java -jar target/bmw-mod-tracker-0.0.1-SNAPSHOT.jar
+# This file intentionally left blank.
+# Deployment is handled by Dockerfile + railway.json
