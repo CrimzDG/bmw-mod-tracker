@@ -2,9 +2,11 @@ const router = require('express').Router()
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const supabase = require('../supabase')
+const { registerLimiter } = require('../middleware/rateLimiter')
 
 // POST /api/auth/register
-router.post('/register', async (req, res) => {
+// registerLimiter applied here — 5 per hour per IP on top of the global auth limit
+router.post('/register', registerLimiter, async (req, res) => {
   const { email, password, username } = req.body
   if (!email || !password || !username) {
     return res.status(400).json({ error: 'Email, password and username are required' })
@@ -13,7 +15,6 @@ router.post('/register', async (req, res) => {
     return res.status(400).json({ error: 'Password must be at least 8 characters' })
   }
 
-  // Check if email exists
   const { data: existing } = await supabase
     .from('users')
     .select('id')
@@ -32,9 +33,7 @@ router.post('/register', async (req, res) => {
     .select()
     .single()
 
-  if (error) {
-    return res.status(500).json({ error: error.message })
-  }
+  if (error) return res.status(500).json({ error: error.message })
 
   const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, { expiresIn: '24h' })
   res.json({ token, userId: user.id, email: user.email, username: user.username })
