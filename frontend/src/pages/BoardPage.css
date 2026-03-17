@@ -6,15 +6,24 @@
 
 .board-main {
   flex: 1;
-  padding: 24px;
+  padding: 20px 16px;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (min-width: 640px) {
+  .board-main { padding: 24px; }
 }
 
 .board-columns {
   display: flex;
-  gap: 16px;
+  gap: 12px;
   align-items: flex-start;
   min-width: max-content;
+}
+
+@media (min-width: 640px) {
+  .board-columns { gap: 16px; }
 }
 
 .board-loading {

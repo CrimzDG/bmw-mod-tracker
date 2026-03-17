@@ -41,7 +41,6 @@ export default function GaragePage() {
   }
 
   function openAdd() { setEditCar(null); setShowModal(true) }
-  function openEdit(car) { setEditCar(car); setShowModal(true) }
   function closeModal() { setShowModal(false); setEditCar(null) }
 
   return (
@@ -66,8 +65,18 @@ export default function GaragePage() {
           <div className="garage-loading"><span className="spinner" /></div>
         ) : cars.length === 0 ? (
           <div className="garage-empty">
-            <span style={{ fontSize: 48 }}>🚗</span>
-            <p>No cars yet — add your first one</p>
+            <div className="garage-empty-icon">
+              <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                <circle cx="18" cy="18" r="17" fill="#1C1C1C" stroke="#444" strokeWidth="1"/>
+                <circle cx="18" cy="18" r="14" fill="none" stroke="#444" strokeWidth="1"/>
+                <path d="M18 4 A14 14 0 0 1 32 18 L18 18 Z" fill="#fff" opacity="0.9"/>
+                <path d="M18 18 L32 18 A14 14 0 0 1 18 32 Z" fill="#1C6EFF"/>
+                <path d="M18 32 A14 14 0 0 1 4 18 L18 18 Z" fill="#fff" opacity="0.9"/>
+                <path d="M4 18 A14 14 0 0 1 18 4 L18 18 Z" fill="#1C6EFF"/>
+                <circle cx="18" cy="18" r="14" fill="none" stroke="#555" strokeWidth="1.5"/>
+              </svg>
+            </div>
+            <p>No cars yet — add your first BMW</p>
             <button className="btn btn-primary" onClick={openAdd}>Add car</button>
           </div>
         ) : (

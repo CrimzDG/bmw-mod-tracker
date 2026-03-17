@@ -4,8 +4,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 24px;
-  gap: 32px;
+  padding: 24px 16px;
+  gap: 28px;
   background:
     radial-gradient(ellipse 60% 40% at 50% 0%, rgba(28,110,255,0.08) 0%, transparent 70%),
     var(--bg);
@@ -15,12 +15,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
+  gap: 4px;
+}
+
+.auth-logo-roundel {
+  margin-bottom: 4px;
 }
 
 .auth-logo-text {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 48px;
+  font-size: 44px;
   letter-spacing: 0.12em;
   color: var(--text);
   line-height: 1;
@@ -38,12 +42,16 @@
   background: var(--bg2);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 32px;
+  padding: 28px 24px;
   width: 100%;
   max-width: 400px;
   display: flex;
   flex-direction: column;
   gap: 18px;
+}
+
+@media (min-width: 480px) {
+  .auth-card { padding: 32px; }
 }
 
 .auth-title {
