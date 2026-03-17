@@ -5,4 +5,3 @@ mvnw.cmd
 *.iml
 .idea/
 src/main/resources/application.properties
-src/main/resources/application.properties.example
