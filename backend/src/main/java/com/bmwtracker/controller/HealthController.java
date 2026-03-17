@@ -13,6 +13,7 @@ public class HealthController {
 
     @GetMapping("/health")
     public ResponseEntity<Map<String, String>> health() {
+        System.out.println("Health check called!");
         return ResponseEntity.ok(Map.of("status", "ok"));
     }
 }
