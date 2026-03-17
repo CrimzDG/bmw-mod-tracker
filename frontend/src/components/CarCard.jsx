@@ -1,6 +1,5 @@
 import './CarCard.css'
 
-// BMW colour swatches
 const BMW_COLORS = {
   'Alpine White': '#F5F5F0',
   'Black Sapphire': '#1a1a2e',
@@ -18,6 +17,10 @@ const BMW_COLORS = {
   'Snapper Rocks Blue': '#4A90D9',
   'Aventurin Red': '#8B0000',
   'Phytonic Blue': '#2D5A8E',
+  'Brooklyn Grey': '#9E9E9E',
+  'Storm Bay': '#4A5568',
+  'Isle of Man Green': '#2D6A4F',
+  'Sao Paulo Yellow': '#D4A017',
 }
 
 function getColorSwatch(colorName) {
@@ -36,18 +39,15 @@ function isLightColor(hex) {
   return (r * 299 + g * 587 + b * 114) / 1000 > 128
 }
 
-// BMW Roundel SVG
 function BMWRoundel({ size = 48 }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width={size} height={size} viewBox="0 0 48 48" fill="none">
       <circle cx="24" cy="24" r="23" fill="#1C1C1C" stroke="#444" strokeWidth="1"/>
       <circle cx="24" cy="24" r="19" fill="none" stroke="#444" strokeWidth="1"/>
-      {/* BMW quarters */}
       <path d="M24 5 A19 19 0 0 1 43 24 L24 24 Z" fill="#fff"/>
       <path d="M24 24 L43 24 A19 19 0 0 1 24 43 Z" fill="#1C6EFF"/>
       <path d="M24 43 A19 19 0 0 1 5 24 L24 24 Z" fill="#fff"/>
       <path d="M5 24 A19 19 0 0 1 24 5 L24 24 Z" fill="#1C6EFF"/>
-      {/* Outer ring */}
       <circle cx="24" cy="24" r="19" fill="none" stroke="#888" strokeWidth="1.5"/>
       <circle cx="24" cy="24" r="23" fill="none" stroke="#555" strokeWidth="1"/>
     </svg>
@@ -60,9 +60,11 @@ export default function CarCard({ car, onClick, onDelete }) {
 
   return (
     <div className="car-card" onClick={onClick}>
-      {/* Color accent bar */}
-      {swatchColor && (
+      {/* Colour accent bar — specific colour or M gradient fallback */}
+      {swatchColor ? (
         <div className="car-card-color-bar" style={{ background: swatchColor }} />
+      ) : (
+        <div className="car-card-color-bar car-card-color-bar--default" />
       )}
 
       <div className="car-card-header">
@@ -104,8 +106,8 @@ export default function CarCard({ car, onClick, onDelete }) {
         </span>
         <span className="car-card-cta">
           Open board
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ marginLeft: 4 }}>
-            <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M3 7h8M8 4l3 3-3 3" stroke="#7b2fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </span>
       </div>

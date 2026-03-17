@@ -7,7 +7,9 @@
   padding: 24px 16px;
   gap: 28px;
   background:
-    radial-gradient(ellipse 60% 40% at 50% 0%, rgba(28,110,255,0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 70% 40% at 20% 100%, rgba(224,60,60,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 30% at 50% 50%, rgba(123,47,255,0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 40% at 80% 0%, rgba(28,110,255,0.08) 0%, transparent 60%),
     var(--bg);
 }
 
@@ -16,25 +18,49 @@
   flex-direction: column;
   align-items: center;
   gap: 4px;
+  position: relative;
+}
+
+/* M gradient halo behind the roundel */
+.auth-logo::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse,
+    rgba(123,47,255,0.18) 0%,
+    rgba(28,110,255,0.1) 40%,
+    transparent 70%);
+  pointer-events: none;
 }
 
 .auth-logo-roundel {
   margin-bottom: 4px;
+  position: relative;
+  z-index: 1;
 }
 
 .auth-logo-text {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 44px;
   letter-spacing: 0.12em;
-  color: var(--text);
   line-height: 1;
+  /* M gradient on the BMW text */
+  background: var(--m-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .auth-logo-sub {
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.3em;
-  color: var(--blue);
+  color: var(--text2);
   text-transform: uppercase;
 }
 
@@ -48,6 +74,24 @@
   display: flex;
   flex-direction: column;
   gap: 18px;
+  position: relative;
+  /* M gradient top border */
+  border-top: 2px solid transparent;
+  background-clip: padding-box;
+  box-shadow: 0 0 0 1px var(--border),
+              0 -1px 0 0 transparent;
+}
+
+/* gradient top line on the card */
+.auth-card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  background: var(--m-gradient);
 }
 
 @media (min-width: 480px) {
@@ -79,11 +123,5 @@
   color: var(--text2);
   font-size: 13px;
 }
-
-.auth-switch a {
-  color: var(--blue);
-}
-
-.auth-switch a:hover {
-  text-decoration: underline;
-}
+.auth-switch a { color: var(--blue); }
+.auth-switch a:hover { text-decoration: underline; }
